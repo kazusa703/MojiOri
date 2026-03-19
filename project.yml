@@ -15,7 +15,7 @@ settings:
     CURRENT_PROJECT_VERSION: "1"
     SWIFT_DEFAULT_ACTOR_ISOLATION: MainActor
     DEVELOPMENT_TEAM: WM7939G226
-    INFOPLIST_KEY_CFBundleDisplayName: MojiOri
+    INFOPLIST_KEY_CFBundleDisplayName: "MojiOri - 文字アート＆ロゴメーカー"
     INFOPLIST_KEY_LSApplicationCategoryType: "public.app-category.graphics-design"
     GENERATE_INFOPLIST_FILE: true
     INFOPLIST_KEY_UILaunchScreen_Generation: true
