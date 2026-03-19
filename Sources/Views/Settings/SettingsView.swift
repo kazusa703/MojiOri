@@ -60,10 +60,10 @@ struct SettingsView: View {
                 LabeledContent(String(localized: "Version"), value: Bundle.main.appVersion)
 
                 Link(String(localized: "Privacy Policy"),
-                     destination: URL(string: "https://mojiori.netlify.app/privacy")!)
+                     destination: URL(string: "https://kazusa703.github.io/MojiOri/privacy.html")!)
 
                 Link(String(localized: "Terms of Use"),
-                     destination: URL(string: "https://mojiori.netlify.app/terms")!)
+                     destination: URL(string: "https://kazusa703.github.io/MojiOri/terms.html")!)
             }
         }
         .navigationTitle(String(localized: "Settings"))
