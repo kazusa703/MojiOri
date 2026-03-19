@@ -365,6 +365,78 @@
         }
       }
     },
+    "Back" : {
+      "comment" : "Navigation back button",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "戻る"
+          }
+        }
+      }
+    },
+    "Filter favorites" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お気に入りフィルター"
+          }
+        }
+      }
+    },
+    "Size" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイズ"
+          }
+        }
+      }
+    },
+    "One-time purchase of ¥480. Remove ads and unlock future templates." : {
+      "comment" : "Pro feature description with price",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¥480の買い切り。広告除去と将来のテンプレートを解放。"
+          }
+        }
+      }
+    },
+    "Product not found" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "商品が見つかりません"
+          }
+        }
+      }
+    },
+    "Purchase is pending approval" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "購入は承認待ちです"
+          }
+        }
+      }
+    },
+    "No purchases to restore" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "復元する購入がありません"
+          }
+        }
+      }
+    },
     "Delete" : {
       "localizations" : {
         "ja" : {

@@ -36,17 +36,18 @@ final class TextTextureGenerator: Sendable {
             let sampleSize = (text as NSString).size(withAttributes: attributes)
             let lineHeight = sampleSize.height + lineSpacing
 
-            // Tile text across the canvas
-            var y: CGFloat = 0
-            while y < canvasSize.height {
-                var x: CGFloat = 0
-                while x < canvasSize.width {
+            // Tile text densely across the canvas (Photoshop-style tight packing)
+            let gap: CGFloat = font.pointSize * 0.3
+            var y: CGFloat = -lineHeight
+            while y < canvasSize.height + lineHeight {
+                var x: CGFloat = -sampleSize.width
+                while x < canvasSize.width + sampleSize.width {
                     let drawText = text + " "
                     (drawText as NSString).draw(
                         at: CGPoint(x: x, y: y),
                         withAttributes: attributes
                     )
-                    x += sampleSize.width + font.pointSize
+                    x += sampleSize.width + gap
                 }
                 y += lineHeight
             }

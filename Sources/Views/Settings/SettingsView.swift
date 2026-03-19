@@ -2,7 +2,7 @@ import SwiftUI
 import StoreKit
 
 struct SettingsView: View {
-    @State private var purchaseService = PurchaseService.shared
+    private var purchaseService: PurchaseService { .shared }
 
     var body: some View {
         List {
@@ -36,19 +36,33 @@ struct SettingsView: View {
             } header: {
                 Text("Pro", comment: "Section header")
             } footer: {
-                if !purchaseService.isPro {
-                    Text("Remove ads and unlock future templates", comment: "Pro feature description")
+                VStack(alignment: .leading, spacing: 4) {
+                    if !purchaseService.isPro {
+                        Text("One-time purchase of ¥480. Remove ads and unlock future templates.", comment: "Pro feature description with price")
+                        HStack(spacing: 8) {
+                            Link(String(localized: "Terms of Use"),
+                                 destination: URL(string: "https://kazusa703.github.io/MojiOri/terms.html")!)
+                            Text("·")
+                            Link(String(localized: "Privacy Policy"),
+                                 destination: URL(string: "https://kazusa703.github.io/MojiOri/privacy.html")!)
+                        }
+                        .font(.caption2)
+                    }
+                    if let error = purchaseService.purchaseError {
+                        Text(error)
+                            .foregroundStyle(.red)
+                    }
                 }
             }
 
             // Export settings
             Section(String(localized: "Export")) {
-                Picker(String(localized: "Format"), selection: $purchaseService.exportFormat) {
+                Picker(String(localized: "Format"), selection: Bindable(purchaseService).exportFormat) {
                     Text("PNG").tag(ExportFormat.png)
                     Text("JPEG").tag(ExportFormat.jpeg)
                 }
 
-                Picker(String(localized: "Quality"), selection: $purchaseService.exportScale) {
+                Picker(String(localized: "Quality"), selection: Bindable(purchaseService).exportScale) {
                     Text("1x (1500px)").tag(1)
                     Text("2x (3000px)").tag(2)
                     Text("3x (4500px)").tag(3)

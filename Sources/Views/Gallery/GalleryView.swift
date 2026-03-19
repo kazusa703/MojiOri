@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct GalleryView: View {
-    private let viewModel = GalleryViewModel()
+    private let templates = TemplateType.allCases
 
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 16) {
-                ForEach(viewModel.templates) { template in
+                ForEach(templates) { template in
                     NavigationLink(value: template) {
                         TemplateCardView(template: template)
                     }

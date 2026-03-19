@@ -2,30 +2,63 @@ import SwiftUI
 
 struct TemplateCardView: View {
     let template: TemplateType
+    @State private var sampleImage: UIImage?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            // Preview placeholder
             ZStack {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(cardGradient)
                     .aspectRatio(1, contentMode: .fit)
 
-                VStack(spacing: 8) {
-                    Image(systemName: iconName)
-                        .font(.system(size: 40))
-                        .foregroundStyle(.white)
+                if let sampleImage {
+                    Image(uiImage: sampleImage)
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .transition(.opacity)
+                } else {
+                    VStack(spacing: 8) {
+                        Image(systemName: iconName)
+                            .font(.largeTitle)
+                            .foregroundStyle(.white)
 
-                    Text(template.displayName)
-                        .font(.headline)
-                        .foregroundStyle(.white)
+                        Text(template.displayName)
+                            .font(.headline)
+                            .foregroundStyle(.white)
+                    }
                 }
             }
+            .animation(.easeIn(duration: 0.3), value: sampleImage != nil)
 
             Text(templateDescription)
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .lineLimit(2)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(template.displayName), \(templateDescription)")
+        .accessibilityAddTraits(.isButton)
+        .task {
+            await generateSamplePreview()
+        }
+    }
+
+    private func generateSamplePreview() async {
+        let inputs = sampleInputs
+        let templateRenderer = renderer(for: template)
+        let image = await templateRenderer.render(inputs: inputs, size: CGSize(width: 300, height: 300))
+        sampleImage = image
+    }
+
+    private var sampleInputs: [String: String] {
+        switch template {
+        case .typoArtClassic:
+            ["backgroundText": "the Digital Typo as Art", "titleText": "the\nDigital\nTypo\nas\nArt"]
+        case .typoArtNeon:
+            ["backgroundText": "TypeArt TypoArt", "titleText": "type"]
+        case .logoPatternSphere:
+            ["patternText": "pattern logo", "titleText": "pattern\nlogo"]
         }
     }
 

@@ -9,6 +9,7 @@ final class PurchaseService {
 
     var isPro = false
     var isPurchasing = false
+    var purchaseError: String?
     var exportFormat: ExportFormat = .png
     var exportScale: Int = 1
 
@@ -25,11 +26,15 @@ final class PurchaseService {
 
     func purchasePro() async {
         isPurchasing = true
+        purchaseError = nil
         defer { isPurchasing = false }
 
         do {
             let products = try await Product.products(for: [Self.proProductID])
-            guard let product = products.first else { return }
+            guard let product = products.first else {
+                purchaseError = String(localized: "Product not found")
+                return
+            }
             let result = try await product.purchase()
 
             switch result {
@@ -37,19 +42,32 @@ final class PurchaseService {
                 let transaction = try checkVerified(verification)
                 isPro = true
                 await transaction.finish()
-            case .pending, .userCancelled:
+            case .pending:
+                purchaseError = String(localized: "Purchase is pending approval")
+            case .userCancelled:
                 break
             @unknown default:
                 break
             }
         } catch {
-            // Purchase failed
+            purchaseError = error.localizedDescription
         }
     }
 
     func restorePurchases() async {
-        try? await AppStore.sync()
-        await checkCurrentEntitlements()
+        isPurchasing = true
+        purchaseError = nil
+        defer { isPurchasing = false }
+
+        do {
+            try await AppStore.sync()
+            await checkCurrentEntitlements()
+            if !isPro {
+                purchaseError = String(localized: "No purchases to restore")
+            }
+        } catch {
+            purchaseError = error.localizedDescription
+        }
     }
 
     private func checkCurrentEntitlements() async {

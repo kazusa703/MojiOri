@@ -11,6 +11,7 @@ struct ExportSheetView: View {
     @State private var isExporting = false
     @State private var showShareSheet = false
     @State private var saveResult: SaveResult?
+    @State private var selectedSize: ExportSize = .square
 
     enum SaveResult {
         case success
@@ -19,13 +20,13 @@ struct ExportSheetView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
+            VStack(spacing: 16) {
                 if let exportImage {
                     Image(uiImage: exportImage)
                         .resizable()
                         .scaledToFit()
                         .clipShape(RoundedRectangle(cornerRadius: 12))
-                        .padding()
+                        .padding(.horizontal)
                 } else if isExporting {
                     Spacer()
                     ProgressView(String(localized: "Generating..."))
@@ -35,7 +36,19 @@ struct ExportSheetView: View {
                         .resizable()
                         .scaledToFit()
                         .clipShape(RoundedRectangle(cornerRadius: 12))
-                        .padding()
+                        .padding(.horizontal)
+                }
+
+                // Size picker
+                Picker(String(localized: "Size"), selection: $selectedSize) {
+                    ForEach(ExportSize.allCases) { size in
+                        Text(size.displayName).tag(size)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal)
+                .onChange(of: selectedSize) {
+                    Task { await regenerate() }
                 }
 
                 if exportImage != nil {
@@ -70,6 +83,7 @@ struct ExportSheetView: View {
                     case .success:
                         Label(String(localized: "Saved!"), systemImage: "checkmark.circle.fill")
                             .foregroundStyle(.green)
+                            .transition(.scale.combined(with: .opacity))
                     case .failure(let message):
                         Label(message, systemImage: "xmark.circle.fill")
                             .foregroundStyle(.red)
@@ -78,6 +92,7 @@ struct ExportSheetView: View {
 
                 Spacer()
             }
+            .animation(.easeInOut, value: saveResult != nil)
             .navigationTitle(String(localized: "Export"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -94,17 +109,20 @@ struct ExportSheetView: View {
             }
         }
         .task {
-            await generateFullRes()
+            await regenerate()
         }
     }
 
-    private func generateFullRes() async {
+    private func regenerate() async {
         isExporting = true
-        exportImage = await viewModel.generateFullResolution()
+        exportImage = await viewModel.generateFullResolution(exportSize: selectedSize)
         isExporting = false
 
-        // Save to history
         if exportImage != nil {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+
+            // Save to history
             let history = ArtworkHistory(
                 templateType: viewModel.templateType,
                 inputTexts: viewModel.inputTexts
@@ -118,10 +136,13 @@ struct ExportSheetView: View {
         guard let image = exportImage else { return }
         ExportService.saveToPhotos(image: image) { success, error in
             if success {
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
                 saveResult = .success
-                // Request review after successful export
                 requestReview()
             } else {
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.error)
                 saveResult = .failure(error?.localizedDescription ?? String(localized: "Failed to save"))
             }
         }

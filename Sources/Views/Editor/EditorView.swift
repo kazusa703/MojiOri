@@ -6,6 +6,7 @@ struct EditorView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @State private var showDiscardAlert = false
+    @FocusState private var focusedField: String?
 
     init(templateType: TemplateType) {
         _viewModel = State(initialValue: EditorViewModel(templateType: templateType))
@@ -23,13 +24,20 @@ struct EditorView: View {
                         field: field,
                         text: Binding(
                             get: { viewModel.inputTexts[field.id] ?? "" },
-                            set: { viewModel.inputTexts[field.id] = $0 }
-                        )
+                            set: {
+                                viewModel.inputTexts[field.id] = $0
+                                viewModel.schedulePreviewUpdate()
+                            }
+                        ),
+                        focusedField: $focusedField
                     )
                 }
 
-                // Generate button
+                // Generate high-res button
                 Button {
+                    focusedField = nil
+                    let generator = UIImpactFeedbackGenerator(style: .medium)
+                    generator.impactOccurred()
                     Task {
                         await viewModel.generatePreview()
                     }
@@ -48,7 +56,9 @@ struct EditorView: View {
             }
             .padding()
         }
+        .scrollDismissesKeyboard(.interactively)
         .navigationTitle(viewModel.templateType.displayName)
+        .navigationBarBackButtonHidden(viewModel.hasInput)
         .toolbar {
             if viewModel.previewImage != nil {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -57,23 +67,25 @@ struct EditorView: View {
                     } label: {
                         Image(systemName: "square.and.arrow.up")
                     }
+                    .accessibilityLabel(String(localized: "Export"))
                 }
             }
-        }
-        .sheet(isPresented: $viewModel.showExportSheet) {
-            ExportSheetView(viewModel: viewModel, modelContext: modelContext)
-        }
-        .navigationBarBackButtonHidden(viewModel.hasInput)
-        .toolbar {
             if viewModel.hasInput {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
                         showDiscardAlert = true
                     } label: {
-                        Image(systemName: "chevron.left")
+                        HStack(spacing: 4) {
+                            Image(systemName: "chevron.left")
+                            Text("Back", comment: "Navigation back button")
+                        }
                     }
+                    .accessibilityLabel(String(localized: "Back"))
                 }
             }
+        }
+        .sheet(isPresented: $viewModel.showExportSheet) {
+            ExportSheetView(viewModel: viewModel, modelContext: modelContext)
         }
         .confirmationDialog(
             String(localized: "Discard changes?"),

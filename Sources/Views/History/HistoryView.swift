@@ -5,10 +5,10 @@ struct HistoryView: View {
     @Query(sort: \ArtworkHistory.createdAt, order: .reverse)
     private var artworks: [ArtworkHistory]
     @Environment(\.modelContext) private var modelContext
-    @State private var viewModel = HistoryViewModel()
+    @State private var showFavoritesOnly = false
 
     private var filteredArtworks: [ArtworkHistory] {
-        if viewModel.showFavoritesOnly {
+        if showFavoritesOnly {
             artworks.filter(\.isFavorite)
         } else {
             artworks
@@ -62,10 +62,11 @@ struct HistoryView: View {
             if !artworks.isEmpty {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        viewModel.showFavoritesOnly.toggle()
+                        showFavoritesOnly.toggle()
                     } label: {
-                        Image(systemName: viewModel.showFavoritesOnly ? "heart.fill" : "heart")
+                        Image(systemName: showFavoritesOnly ? "heart.fill" : "heart")
                     }
+                    .accessibilityLabel(String(localized: "Filter favorites"))
                 }
             }
         }

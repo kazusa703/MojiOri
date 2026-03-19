@@ -29,9 +29,7 @@
 		A185FD579213EA53C74FAE0F /* TemplateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4698859738649A0957AE13E0 /* TemplateCardView.swift */; };
 		AC27433AB4006194E868AD2A /* MojiOriApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3849B6C90937E2A1187E0EBA /* MojiOriApp.swift */; };
 		B6A2B4258A70A7985D6F189D /* ExportSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDEAC2D42390A05E49EA3D1 /* ExportSheetView.swift */; };
-		C07C0CEAF35CF106CBD49B5D /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DE8E73208F0DBE6C799B3D /* HistoryViewModel.swift */; };
 		C32101CDFC538EEA4211E1F6 /* LogoPatternSphereRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381CC08C8894A3595EC24F4 /* LogoPatternSphereRenderer.swift */; };
-		C4A15B810F1433D6C45B78F1 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B2DE501BB64B03FE714CA /* GalleryViewModel.swift */; };
 		C4D54D1CDB2D86F65C141C3B /* TemplateInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE31DCF0EECAD67C10C163C /* TemplateInputField.swift */; };
 		E4E4BC99CF229A9B8EDD0259 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA4A5C04EA725C1DF4D6578 /* Localizable.xcstrings */; };
 		F38710D570DDCF5EAE41C82C /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AAA41ED8DB07E9E2FC5F06 /* GalleryView.swift */; };
@@ -66,13 +64,11 @@
 		53AAA41ED8DB07E9E2FC5F06 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		53CDE0B618A9546EC7BD801F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		53F3C2E6AE0368057A1A51FC /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		5A5B2DE501BB64B03FE714CA /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
 		5B6CA5F4468647E989A3BB8B /* TypoArtNeonRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypoArtNeonRenderer.swift; sourceTree = "<group>"; };
 		5CDEAC2D42390A05E49EA3D1 /* ExportSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportSheetView.swift; sourceTree = "<group>"; };
 		6DBEC91CC2BD4D50ED27E998 /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
 		826A61BD7C82AC6836A5B024 /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
 		8381CC08C8894A3595EC24F4 /* LogoPatternSphereRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPatternSphereRenderer.swift; sourceTree = "<group>"; };
-		83DE8E73208F0DBE6C799B3D /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		A8D25362FCC41B6C8AAB3314 /* LayerCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerCompositor.swift; sourceTree = "<group>"; };
 		BC17F791A676AFB89B80CE13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C263DBF606BD90A52C4DCC39 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
@@ -147,8 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				C263DBF606BD90A52C4DCC39 /* EditorViewModel.swift */,
-				5A5B2DE501BB64B03FE714CA /* GalleryViewModel.swift */,
-				83DE8E73208F0DBE6C799B3D /* HistoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -363,10 +357,8 @@
 				B6A2B4258A70A7985D6F189D /* ExportSheetView.swift in Sources */,
 				9699C099FA7C98323938F5E7 /* FilterChain.swift in Sources */,
 				F38710D570DDCF5EAE41C82C /* GalleryView.swift in Sources */,
-				C4A15B810F1433D6C45B78F1 /* GalleryViewModel.swift in Sources */,
 				764AB135D79445C0D169E07A /* HistoryItemView.swift in Sources */,
 				931A400637202518B1049AF7 /* HistoryView.swift in Sources */,
-				C07C0CEAF35CF106CBD49B5D /* HistoryViewModel.swift in Sources */,
 				354C709BC1B5DA2DBABDD732 /* LayerCompositor.swift in Sources */,
 				C32101CDFC538EEA4211E1F6 /* LogoPatternSphereRenderer.swift in Sources */,
 				AC27433AB4006194E868AD2A /* MojiOriApp.swift in Sources */,
