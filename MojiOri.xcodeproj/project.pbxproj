@@ -1,0 +1,647 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		045652162C816D9D8E31CECC /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093244178BC0597421E4CC54 /* EditorView.swift */; };
+		0575BC528E8D68E1496C36EF /* TextInputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E0BCDE4393BE727A8B5E10 /* TextInputFieldView.swift */; };
+		0DE16697D1E4ED259BBC4B13 /* PatternTiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE5DA650721BF6B897888DE /* PatternTiler.swift */; };
+		2301576D80DFE9790AB90706 /* TemplateRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40848C2684535A25D79E8248 /* TemplateRenderer.swift */; };
+		354C709BC1B5DA2DBABDD732 /* LayerCompositor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D25362FCC41B6C8AAB3314 /* LayerCompositor.swift */; };
+		370429DC1AD366F57900E654 /* ExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826A61BD7C82AC6836A5B024 /* ExportService.swift */; };
+		4424F7B283D2196DB7B54265 /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB475D20E57A714DDB887CB /* AdService.swift */; };
+		504103053FF5B0FBF4A47764 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD835784E691A781AB2287D /* PurchaseService.swift */; };
+		634386F9BE4EAFFBF34E6836 /* PreviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343F3685C83B5FBC70367C6C /* PreviewImageView.swift */; };
+		6ED42C56B907514884D728B3 /* TypoArtNeonRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CA5F4468647E989A3BB8B /* TypoArtNeonRenderer.swift */; };
+		6F8644E91158F6F6DE6D193F /* TemplateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F7F9710D07A79B6712428 /* TemplateType.swift */; };
+		727516B815B2FDE3CD3CC21D /* TextTextureGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AC425FA24698634570320 /* TextTextureGenerator.swift */; };
+		74DA4971B7A3691B23D3E5D8 /* TextTextureGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F071EDFA6024BD2BB2B409BF /* TextTextureGeneratorTests.swift */; };
+		764AB135D79445C0D169E07A /* HistoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBEC91CC2BD4D50ED27E998 /* HistoryItemView.swift */; };
+		7F56CD302F83C45464CC6948 /* TypoArtClassicRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294984C5D4020113CEE1B0F5 /* TypoArtClassicRenderer.swift */; };
+		8BFD7455A7D6E76D384871A2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CDE0B618A9546EC7BD801F /* SettingsView.swift */; };
+		931A400637202518B1049AF7 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F3C2E6AE0368057A1A51FC /* HistoryView.swift */; };
+		9699C099FA7C98323938F5E7 /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F6169B80465F687814EE3E /* FilterChain.swift */; };
+		982B10C44CCEEF948874DEE6 /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C263DBF606BD90A52C4DCC39 /* EditorViewModel.swift */; };
+		A185FD579213EA53C74FAE0F /* TemplateCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4698859738649A0957AE13E0 /* TemplateCardView.swift */; };
+		AC27433AB4006194E868AD2A /* MojiOriApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3849B6C90937E2A1187E0EBA /* MojiOriApp.swift */; };
+		B6A2B4258A70A7985D6F189D /* ExportSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDEAC2D42390A05E49EA3D1 /* ExportSheetView.swift */; };
+		C07C0CEAF35CF106CBD49B5D /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DE8E73208F0DBE6C799B3D /* HistoryViewModel.swift */; };
+		C32101CDFC538EEA4211E1F6 /* LogoPatternSphereRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381CC08C8894A3595EC24F4 /* LogoPatternSphereRenderer.swift */; };
+		C4A15B810F1433D6C45B78F1 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5B2DE501BB64B03FE714CA /* GalleryViewModel.swift */; };
+		C4D54D1CDB2D86F65C141C3B /* TemplateInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE31DCF0EECAD67C10C163C /* TemplateInputField.swift */; };
+		E4E4BC99CF229A9B8EDD0259 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA4A5C04EA725C1DF4D6578 /* Localizable.xcstrings */; };
+		F38710D570DDCF5EAE41C82C /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AAA41ED8DB07E9E2FC5F06 /* GalleryView.swift */; };
+		F80D40AEF851410FC6CCBF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC17F791A676AFB89B80CE13 /* Assets.xcassets */; };
+		FF8D9BC60A944B802ABD29B9 /* ArtworkHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8236F7FEA0ACFE991AA947 /* ArtworkHistory.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F954FEE6DB0BBA5D08BC902F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55CF6D9A205248A0F8A49C19 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45C18E7ED06DC0A1C51A1DA8;
+			remoteInfo = MojiOri;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		093244178BC0597421E4CC54 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		0CE31DCF0EECAD67C10C163C /* TemplateInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateInputField.swift; sourceTree = "<group>"; };
+		25F6169B80465F687814EE3E /* FilterChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChain.swift; sourceTree = "<group>"; };
+		294984C5D4020113CEE1B0F5 /* TypoArtClassicRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypoArtClassicRenderer.swift; sourceTree = "<group>"; };
+		2A8236F7FEA0ACFE991AA947 /* ArtworkHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkHistory.swift; sourceTree = "<group>"; };
+		2C89F123C00791E6BD3E5205 /* MojiOriTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = MojiOriTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FA4A5C04EA725C1DF4D6578 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		343F3685C83B5FBC70367C6C /* PreviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageView.swift; sourceTree = "<group>"; };
+		3849B6C90937E2A1187E0EBA /* MojiOriApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MojiOriApp.swift; sourceTree = "<group>"; };
+		40848C2684535A25D79E8248 /* TemplateRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateRenderer.swift; sourceTree = "<group>"; };
+		4698859738649A0957AE13E0 /* TemplateCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCardView.swift; sourceTree = "<group>"; };
+		4A3AC425FA24698634570320 /* TextTextureGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTextureGenerator.swift; sourceTree = "<group>"; };
+		4EB475D20E57A714DDB887CB /* AdService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdService.swift; sourceTree = "<group>"; };
+		53AAA41ED8DB07E9E2FC5F06 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		53CDE0B618A9546EC7BD801F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		53F3C2E6AE0368057A1A51FC /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		5A5B2DE501BB64B03FE714CA /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
+		5B6CA5F4468647E989A3BB8B /* TypoArtNeonRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypoArtNeonRenderer.swift; sourceTree = "<group>"; };
+		5CDEAC2D42390A05E49EA3D1 /* ExportSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportSheetView.swift; sourceTree = "<group>"; };
+		6DBEC91CC2BD4D50ED27E998 /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
+		826A61BD7C82AC6836A5B024 /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
+		8381CC08C8894A3595EC24F4 /* LogoPatternSphereRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPatternSphereRenderer.swift; sourceTree = "<group>"; };
+		83DE8E73208F0DBE6C799B3D /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		A8D25362FCC41B6C8AAB3314 /* LayerCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerCompositor.swift; sourceTree = "<group>"; };
+		BC17F791A676AFB89B80CE13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C263DBF606BD90A52C4DCC39 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
+		CD0F7F9710D07A79B6712428 /* TemplateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateType.swift; sourceTree = "<group>"; };
+		CEE5DA650721BF6B897888DE /* PatternTiler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternTiler.swift; sourceTree = "<group>"; };
+		D33D41B63C1F2EF8FB4E56E7 /* MojiOri.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MojiOri.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECD835784E691A781AB2287D /* PurchaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
+		F071EDFA6024BD2BB2B409BF /* TextTextureGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTextureGeneratorTests.swift; sourceTree = "<group>"; };
+		F7E0BCDE4393BE727A8B5E10 /* TextInputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFieldView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1EFDE930E07BA9C84DD07811 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				53CDE0B618A9546EC7BD801F /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		2E672F602DAE6C53AD3343A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D33D41B63C1F2EF8FB4E56E7 /* MojiOri.app */,
+				2C89F123C00791E6BD3E5205 /* MojiOriTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2EBD3A36B2A2B1AEB6BA4272 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				9A213C0340ED3695EA3E0047 /* RenderTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		4CEEAE41B8EC54FBE109304D /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				5CDEAC2D42390A05E49EA3D1 /* ExportSheetView.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		5D0F4A6CCCACC385EF5E345F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2A8236F7FEA0ACFE991AA947 /* ArtworkHistory.swift */,
+				0CE31DCF0EECAD67C10C163C /* TemplateInputField.swift */,
+				CD0F7F9710D07A79B6712428 /* TemplateType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		95C5C96AF50F1BEC4F9F48DF /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Textures;
+			sourceTree = "<group>";
+		};
+		9A213C0340ED3695EA3E0047 /* RenderTests */ = {
+			isa = PBXGroup;
+			children = (
+				F071EDFA6024BD2BB2B409BF /* TextTextureGeneratorTests.swift */,
+			);
+			path = RenderTests;
+			sourceTree = "<group>";
+		};
+		A310CBC76A6A07FB658F076E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C263DBF606BD90A52C4DCC39 /* EditorViewModel.swift */,
+				5A5B2DE501BB64B03FE714CA /* GalleryViewModel.swift */,
+				83DE8E73208F0DBE6C799B3D /* HistoryViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B71FF141056A3101854CD7BD /* History */ = {
+			isa = PBXGroup;
+			children = (
+				6DBEC91CC2BD4D50ED27E998 /* HistoryItemView.swift */,
+				53F3C2E6AE0368057A1A51FC /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		BD2C20F4EF9FC7E400FCA053 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3849B6C90937E2A1187E0EBA /* MojiOriApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CD0FF8A5DD15AFF7689E4FA9 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				53AAA41ED8DB07E9E2FC5F06 /* GalleryView.swift */,
+				4698859738649A0957AE13E0 /* TemplateCardView.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		D278C43B7CB421BA1A074575 /* Renderers */ = {
+			isa = PBXGroup;
+			children = (
+				25F6169B80465F687814EE3E /* FilterChain.swift */,
+				A8D25362FCC41B6C8AAB3314 /* LayerCompositor.swift */,
+				8381CC08C8894A3595EC24F4 /* LogoPatternSphereRenderer.swift */,
+				CEE5DA650721BF6B897888DE /* PatternTiler.swift */,
+				40848C2684535A25D79E8248 /* TemplateRenderer.swift */,
+				4A3AC425FA24698634570320 /* TextTextureGenerator.swift */,
+				294984C5D4020113CEE1B0F5 /* TypoArtClassicRenderer.swift */,
+				5B6CA5F4468647E989A3BB8B /* TypoArtNeonRenderer.swift */,
+			);
+			path = Renderers;
+			sourceTree = "<group>";
+		};
+		E15124E27D5F39681F135F44 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F3288E6567C857100E8EC2C0 /* Editor */,
+				4CEEAE41B8EC54FBE109304D /* Export */,
+				CD0FF8A5DD15AFF7689E4FA9 /* Gallery */,
+				B71FF141056A3101854CD7BD /* History */,
+				1EFDE930E07BA9C84DD07811 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1C35ADBBFF86B12C4A56AA7 = {
+			isa = PBXGroup;
+			children = (
+				E68CC152D7E887906DB28062 /* Resources */,
+				F7165FDAB6F55E7126D3CC7D /* Sources */,
+				2EBD3A36B2A2B1AEB6BA4272 /* Tests */,
+				2E672F602DAE6C53AD3343A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E65979B47C13EF3A33F06034 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4EB475D20E57A714DDB887CB /* AdService.swift */,
+				826A61BD7C82AC6836A5B024 /* ExportService.swift */,
+				ECD835784E691A781AB2287D /* PurchaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E68CC152D7E887906DB28062 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				95C5C96AF50F1BEC4F9F48DF /* Textures */,
+				BC17F791A676AFB89B80CE13 /* Assets.xcassets */,
+				2FA4A5C04EA725C1DF4D6578 /* Localizable.xcstrings */,
+			);
+			name = Resources;
+			path = Sources/Resources;
+			sourceTree = "<group>";
+		};
+		F3288E6567C857100E8EC2C0 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				093244178BC0597421E4CC54 /* EditorView.swift */,
+				343F3685C83B5FBC70367C6C /* PreviewImageView.swift */,
+				F7E0BCDE4393BE727A8B5E10 /* TextInputFieldView.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		F7165FDAB6F55E7126D3CC7D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BD2C20F4EF9FC7E400FCA053 /* App */,
+				5D0F4A6CCCACC385EF5E345F /* Models */,
+				D278C43B7CB421BA1A074575 /* Renderers */,
+				E65979B47C13EF3A33F06034 /* Services */,
+				A310CBC76A6A07FB658F076E /* ViewModels */,
+				E15124E27D5F39681F135F44 /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		45C18E7ED06DC0A1C51A1DA8 /* MojiOri */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5723C258EB1D5737CAE31D75 /* Build configuration list for PBXNativeTarget "MojiOri" */;
+			buildPhases = (
+				5B3A56FC1398CA2B9B50C097 /* Sources */,
+				871135C98DB82F31C098A876 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MojiOri;
+			packageProductDependencies = (
+			);
+			productName = MojiOri;
+			productReference = D33D41B63C1F2EF8FB4E56E7 /* MojiOri.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BEBD8A3B4BC9182C913D7757 /* MojiOriTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5CF56B732196D9D91194E9B /* Build configuration list for PBXNativeTarget "MojiOriTests" */;
+			buildPhases = (
+				5DBEEB6EAA2251B1F6BE6B1C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CEB6A8C93B3846EC5CFC539 /* PBXTargetDependency */,
+			);
+			name = MojiOriTests;
+			packageProductDependencies = (
+			);
+			productName = MojiOriTests;
+			productReference = 2C89F123C00791E6BD3E5205 /* MojiOriTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		55CF6D9A205248A0F8A49C19 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					45C18E7ED06DC0A1C51A1DA8 = {
+						DevelopmentTeam = WM7939G226;
+						ProvisioningStyle = Automatic;
+					};
+					BEBD8A3B4BC9182C913D7757 = {
+						DevelopmentTeam = WM7939G226;
+					};
+				};
+			};
+			buildConfigurationList = 6E2792139D82F20ECCF33486 /* Build configuration list for PBXProject "MojiOri" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				ja,
+			);
+			mainGroup = E1C35ADBBFF86B12C4A56AA7;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2E672F602DAE6C53AD3343A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				45C18E7ED06DC0A1C51A1DA8 /* MojiOri */,
+				BEBD8A3B4BC9182C913D7757 /* MojiOriTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		871135C98DB82F31C098A876 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F80D40AEF851410FC6CCBF73 /* Assets.xcassets in Resources */,
+				E4E4BC99CF229A9B8EDD0259 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5B3A56FC1398CA2B9B50C097 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4424F7B283D2196DB7B54265 /* AdService.swift in Sources */,
+				FF8D9BC60A944B802ABD29B9 /* ArtworkHistory.swift in Sources */,
+				045652162C816D9D8E31CECC /* EditorView.swift in Sources */,
+				982B10C44CCEEF948874DEE6 /* EditorViewModel.swift in Sources */,
+				370429DC1AD366F57900E654 /* ExportService.swift in Sources */,
+				B6A2B4258A70A7985D6F189D /* ExportSheetView.swift in Sources */,
+				9699C099FA7C98323938F5E7 /* FilterChain.swift in Sources */,
+				F38710D570DDCF5EAE41C82C /* GalleryView.swift in Sources */,
+				C4A15B810F1433D6C45B78F1 /* GalleryViewModel.swift in Sources */,
+				764AB135D79445C0D169E07A /* HistoryItemView.swift in Sources */,
+				931A400637202518B1049AF7 /* HistoryView.swift in Sources */,
+				C07C0CEAF35CF106CBD49B5D /* HistoryViewModel.swift in Sources */,
+				354C709BC1B5DA2DBABDD732 /* LayerCompositor.swift in Sources */,
+				C32101CDFC538EEA4211E1F6 /* LogoPatternSphereRenderer.swift in Sources */,
+				AC27433AB4006194E868AD2A /* MojiOriApp.swift in Sources */,
+				0DE16697D1E4ED259BBC4B13 /* PatternTiler.swift in Sources */,
+				634386F9BE4EAFFBF34E6836 /* PreviewImageView.swift in Sources */,
+				504103053FF5B0FBF4A47764 /* PurchaseService.swift in Sources */,
+				8BFD7455A7D6E76D384871A2 /* SettingsView.swift in Sources */,
+				A185FD579213EA53C74FAE0F /* TemplateCardView.swift in Sources */,
+				C4D54D1CDB2D86F65C141C3B /* TemplateInputField.swift in Sources */,
+				2301576D80DFE9790AB90706 /* TemplateRenderer.swift in Sources */,
+				6F8644E91158F6F6DE6D193F /* TemplateType.swift in Sources */,
+				0575BC528E8D68E1496C36EF /* TextInputFieldView.swift in Sources */,
+				727516B815B2FDE3CD3CC21D /* TextTextureGenerator.swift in Sources */,
+				7F56CD302F83C45464CC6948 /* TypoArtClassicRenderer.swift in Sources */,
+				6ED42C56B907514884D728B3 /* TypoArtNeonRenderer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DBEEB6EAA2251B1F6BE6B1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74DA4971B7A3691B23D3E5D8 /* TextTextureGeneratorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5CEB6A8C93B3846EC5CFC539 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45C18E7ED06DC0A1C51A1DA8 /* MojiOri */;
+			targetProxy = F954FEE6DB0BBA5D08BC902F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		86E92CD9224AACD7EFB8807E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WM7939G226;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MojiOri;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save your artwork to the photo library";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A1A501F8AC4ACFD978CF0543 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.imaiissatsu.mojiori.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MojiOri.app/MojiOri";
+			};
+			name = Debug;
+		};
+		DFA40F04DACB1AB9E6249985 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = WM7939G226;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MojiOri;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.graphics-design";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save your artwork to the photo library";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		E549336D4CA9A978AFC67E43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.imaiissatsu.mojiori.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MojiOri.app/MojiOri";
+			};
+			name = Release;
+		};
+		F26E3BB471FE99ED9771B375 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.imaiissatsu.mojiori;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FAA492A763053C29B4639769 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.imaiissatsu.mojiori;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5723C258EB1D5737CAE31D75 /* Build configuration list for PBXNativeTarget "MojiOri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAA492A763053C29B4639769 /* Debug */,
+				F26E3BB471FE99ED9771B375 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E2792139D82F20ECCF33486 /* Build configuration list for PBXProject "MojiOri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86E92CD9224AACD7EFB8807E /* Debug */,
+				DFA40F04DACB1AB9E6249985 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5CF56B732196D9D91194E9B /* Build configuration list for PBXNativeTarget "MojiOriTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1A501F8AC4ACFD978CF0543 /* Debug */,
+				E549336D4CA9A978AFC67E43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 55CF6D9A205248A0F8A49C19 /* Project object */;
+}
