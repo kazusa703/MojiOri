@@ -12,6 +12,8 @@ struct ExportSheetView: View {
     @State private var showShareSheet = false
     @State private var saveResult: SaveResult?
     @State private var selectedSize: ExportSize = .square
+    @State private var showInterstitialPlaceholder = false
+    @AppStorage("exportSuccessCount") private var exportSuccessCount = 0
 
     enum SaveResult {
         case success
@@ -109,7 +111,29 @@ struct ExportSheetView: View {
             }
         }
         .task {
+            // Show interstitial ad before generating (free users, every 3rd export)
+            if AdService.shouldShowInterstitial() {
+                showInterstitialPlaceholder = true
+                try? await Task.sleep(for: .seconds(1))
+                showInterstitialPlaceholder = false
+            }
             await regenerate()
+        }
+        .overlay {
+            if showInterstitialPlaceholder {
+                Color.black.opacity(0.5)
+                    .ignoresSafeArea()
+                    .overlay {
+                        VStack {
+                            Text("Ad")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        .frame(width: 300, height: 250)
+                        .background(.regularMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+            }
         }
     }
 
@@ -139,7 +163,11 @@ struct ExportSheetView: View {
                 let generator = UINotificationFeedbackGenerator()
                 generator.notificationOccurred(.success)
                 saveResult = .success
-                requestReview()
+                exportSuccessCount += 1
+                // Request review after 3rd and 10th successful export
+                if exportSuccessCount == 3 || exportSuccessCount == 10 {
+                    requestReview()
+                }
             } else {
                 let generator = UINotificationFeedbackGenerator()
                 generator.notificationOccurred(.error)

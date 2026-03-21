@@ -45,8 +45,11 @@ final class EditorViewModel {
     }
 
     func generateFullResolution(exportSize: ExportSize = .square) async -> UIImage? {
+        let scale = PurchaseService.shared.exportScale
+        let baseSize = exportSize.cgSize
+        let scaledSize = CGSize(width: baseSize.width * CGFloat(scale), height: baseSize.height * CGFloat(scale))
         let templateRenderer = renderer(for: templateType)
-        return await templateRenderer.render(inputs: inputTexts, size: exportSize.cgSize)
+        return await templateRenderer.render(inputs: inputTexts, size: scaledSize)
     }
 
     var hasInput: Bool {
