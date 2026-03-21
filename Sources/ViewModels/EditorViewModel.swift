@@ -3,17 +3,42 @@ import SwiftUI
 @Observable
 final class EditorViewModel {
     var templateType: TemplateType
-    var inputTexts: [String: String] = [:]
+    var inputs = TemplateInputs()
     var previewImage: UIImage?
     var isRendering = false
     var showExportSheet = false
+
+    // Legacy compatibility
+    var inputTexts: [String: String] {
+        get { inputs.textValues }
+        set {
+            for (key, value) in newValue {
+                inputs.set(.string(value), for: key)
+            }
+        }
+    }
 
     private var previewTask: Task<Void, Never>?
 
     init(templateType: TemplateType) {
         self.templateType = templateType
+        // Initialize text fields with empty strings
         for field in templateType.inputFields {
-            inputTexts[field.id] = ""
+            if case .text = field.fieldType {
+                inputs.set(.string(""), for: field.id)
+            }
+        }
+        // Initialize color fields with first palette color or default
+        for field in templateType.inputFields {
+            if case .color(let palette) = field.fieldType, let first = palette.first {
+                inputs.set(.color(first.uiColor), for: field.id)
+            }
+        }
+        // Initialize font fields with template default
+        for field in templateType.inputFields {
+            if case .font = field.fieldType {
+                inputs.set(.font(templateType.defaultParameters.titleFont), for: field.id)
+            }
         }
     }
 
@@ -50,7 +75,6 @@ final class EditorViewModel {
         let targetSize = CGSize(width: baseSize.width * CGFloat(qualityScale), height: baseSize.height * CGFloat(qualityScale))
         let templateRenderer = renderer(for: templateType)
         guard let rendered = await templateRenderer.render(inputs: inputTexts, size: targetSize) else { return nil }
-        // Re-render at scale=1 so saved image has exact pixel dimensions
         return normalizeToPixels(rendered, size: targetSize)
     }
 
@@ -65,15 +89,15 @@ final class EditorViewModel {
     }
 
     var hasInput: Bool {
-        inputTexts.values.contains(where: { !$0.isEmpty })
+        inputs.hasInput
     }
 }
 
 enum ExportSize: String, CaseIterable, Identifiable {
-    case square        // 1500x1500
-    case instagramStory // 1080x1920
-    case twitterHeader // 1500x500
-    case facebookCover // 1640x924
+    case square
+    case instagramStory
+    case twitterHeader
+    case facebookCover
 
     var id: String { rawValue }
 

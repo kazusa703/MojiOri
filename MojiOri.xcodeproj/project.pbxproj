@@ -16,6 +16,7 @@
 		4424F7B283D2196DB7B54265 /* AdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB475D20E57A714DDB887CB /* AdService.swift */; };
 		504103053FF5B0FBF4A47764 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD835784E691A781AB2287D /* PurchaseService.swift */; };
 		634386F9BE4EAFFBF34E6836 /* PreviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343F3685C83B5FBC70367C6C /* PreviewImageView.swift */; };
+		6B73C2F8EC3DAC99DDE9A4A0 /* RenderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A698E97F39B9EC6AD9C96 /* RenderContext.swift */; };
 		6ED42C56B907514884D728B3 /* TypoArtNeonRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6CA5F4468647E989A3BB8B /* TypoArtNeonRenderer.swift */; };
 		6F8644E91158F6F6DE6D193F /* TemplateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0F7F9710D07A79B6712428 /* TemplateType.swift */; };
 		727516B815B2FDE3CD3CC21D /* TextTextureGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AC425FA24698634570320 /* TextTextureGenerator.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		000A698E97F39B9EC6AD9C96 /* RenderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderContext.swift; sourceTree = "<group>"; };
 		093244178BC0597421E4CC54 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		0CE31DCF0EECAD67C10C163C /* TemplateInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateInputField.swift; sourceTree = "<group>"; };
 		25F6169B80465F687814EE3E /* FilterChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterChain.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				A8D25362FCC41B6C8AAB3314 /* LayerCompositor.swift */,
 				8381CC08C8894A3595EC24F4 /* LogoPatternSphereRenderer.swift */,
 				CEE5DA650721BF6B897888DE /* PatternTiler.swift */,
+				000A698E97F39B9EC6AD9C96 /* RenderContext.swift */,
 				90D6997C3E4D3ED2328D456C /* RetroHalftoneRenderer.swift */,
 				40848C2684535A25D79E8248 /* TemplateRenderer.swift */,
 				4A3AC425FA24698634570320 /* TextTextureGenerator.swift */,
@@ -375,6 +378,7 @@
 				0DE16697D1E4ED259BBC4B13 /* PatternTiler.swift in Sources */,
 				634386F9BE4EAFFBF34E6836 /* PreviewImageView.swift in Sources */,
 				504103053FF5B0FBF4A47764 /* PurchaseService.swift in Sources */,
+				6B73C2F8EC3DAC99DDE9A4A0 /* RenderContext.swift in Sources */,
 				C920003E0E5F0FB1921612FC /* RetroHalftoneRenderer.swift in Sources */,
 				8BFD7455A7D6E76D384871A2 /* SettingsView.swift in Sources */,
 				A185FD579213EA53C74FAE0F /* TemplateCardView.swift in Sources */,

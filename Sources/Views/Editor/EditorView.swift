@@ -18,18 +18,13 @@ struct EditorView: View {
                 // Preview
                 PreviewImageView(image: viewModel.previewImage, isRendering: viewModel.isRendering)
 
-                // Input fields
+                // Dynamic input fields
                 ForEach(viewModel.templateType.inputFields) { field in
-                    TextInputFieldView(
+                    DynamicInputFieldView(
                         field: field,
-                        text: Binding(
-                            get: { viewModel.inputTexts[field.id] ?? "" },
-                            set: {
-                                viewModel.inputTexts[field.id] = $0
-                                viewModel.schedulePreviewUpdate()
-                            }
-                        ),
-                        focusedField: $focusedField
+                        inputs: $viewModel.inputs,
+                        focusedField: $focusedField,
+                        onChanged: { viewModel.schedulePreviewUpdate() }
                     )
                 }
 
