@@ -10,5 +10,8 @@ func renderer(for type: TemplateType) -> any TemplateRenderer {
     case .typoArtClassic: TypoArtClassicRenderer()
     case .typoArtNeon: TypoArtNeonRenderer()
     case .logoPatternSphere: LogoPatternSphereRenderer()
+    case .waveText: WaveTextRenderer()
+    case .retroHalftone: RetroHalftoneRenderer()
+    case .gradientStack: GradientStackRenderer()
     }
 }

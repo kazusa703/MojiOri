@@ -21,8 +21,10 @@
 		727516B815B2FDE3CD3CC21D /* TextTextureGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3AC425FA24698634570320 /* TextTextureGenerator.swift */; };
 		74DA4971B7A3691B23D3E5D8 /* TextTextureGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F071EDFA6024BD2BB2B409BF /* TextTextureGeneratorTests.swift */; };
 		764AB135D79445C0D169E07A /* HistoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBEC91CC2BD4D50ED27E998 /* HistoryItemView.swift */; };
+		7D16098A069FA2DED32EAD11 /* GradientStackRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74303F312C24D37B29CF5DC0 /* GradientStackRenderer.swift */; };
 		7F56CD302F83C45464CC6948 /* TypoArtClassicRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294984C5D4020113CEE1B0F5 /* TypoArtClassicRenderer.swift */; };
 		8BFD7455A7D6E76D384871A2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CDE0B618A9546EC7BD801F /* SettingsView.swift */; };
+		9251ABF1B75A20AE89A88B34 /* WaveTextRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062BD53255CA832DAF84C4F /* WaveTextRenderer.swift */; };
 		931A400637202518B1049AF7 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F3C2E6AE0368057A1A51FC /* HistoryView.swift */; };
 		9699C099FA7C98323938F5E7 /* FilterChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F6169B80465F687814EE3E /* FilterChain.swift */; };
 		982B10C44CCEEF948874DEE6 /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C263DBF606BD90A52C4DCC39 /* EditorViewModel.swift */; };
@@ -31,6 +33,7 @@
 		B6A2B4258A70A7985D6F189D /* ExportSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDEAC2D42390A05E49EA3D1 /* ExportSheetView.swift */; };
 		C32101CDFC538EEA4211E1F6 /* LogoPatternSphereRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8381CC08C8894A3595EC24F4 /* LogoPatternSphereRenderer.swift */; };
 		C4D54D1CDB2D86F65C141C3B /* TemplateInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE31DCF0EECAD67C10C163C /* TemplateInputField.swift */; };
+		C920003E0E5F0FB1921612FC /* RetroHalftoneRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D6997C3E4D3ED2328D456C /* RetroHalftoneRenderer.swift */; };
 		E4E4BC99CF229A9B8EDD0259 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2FA4A5C04EA725C1DF4D6578 /* Localizable.xcstrings */; };
 		F38710D570DDCF5EAE41C82C /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AAA41ED8DB07E9E2FC5F06 /* GalleryView.swift */; };
 		F80D40AEF851410FC6CCBF73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC17F791A676AFB89B80CE13 /* Assets.xcassets */; };
@@ -67,9 +70,12 @@
 		5B6CA5F4468647E989A3BB8B /* TypoArtNeonRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypoArtNeonRenderer.swift; sourceTree = "<group>"; };
 		5CDEAC2D42390A05E49EA3D1 /* ExportSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportSheetView.swift; sourceTree = "<group>"; };
 		6DBEC91CC2BD4D50ED27E998 /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
+		74303F312C24D37B29CF5DC0 /* GradientStackRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStackRenderer.swift; sourceTree = "<group>"; };
 		826A61BD7C82AC6836A5B024 /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
 		8381CC08C8894A3595EC24F4 /* LogoPatternSphereRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoPatternSphereRenderer.swift; sourceTree = "<group>"; };
+		90D6997C3E4D3ED2328D456C /* RetroHalftoneRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroHalftoneRenderer.swift; sourceTree = "<group>"; };
 		A8D25362FCC41B6C8AAB3314 /* LayerCompositor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerCompositor.swift; sourceTree = "<group>"; };
+		B062BD53255CA832DAF84C4F /* WaveTextRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveTextRenderer.swift; sourceTree = "<group>"; };
 		BC17F791A676AFB89B80CE13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C263DBF606BD90A52C4DCC39 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
 		CD0F7F9710D07A79B6712428 /* TemplateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateType.swift; sourceTree = "<group>"; };
@@ -177,13 +183,16 @@
 			isa = PBXGroup;
 			children = (
 				25F6169B80465F687814EE3E /* FilterChain.swift */,
+				74303F312C24D37B29CF5DC0 /* GradientStackRenderer.swift */,
 				A8D25362FCC41B6C8AAB3314 /* LayerCompositor.swift */,
 				8381CC08C8894A3595EC24F4 /* LogoPatternSphereRenderer.swift */,
 				CEE5DA650721BF6B897888DE /* PatternTiler.swift */,
+				90D6997C3E4D3ED2328D456C /* RetroHalftoneRenderer.swift */,
 				40848C2684535A25D79E8248 /* TemplateRenderer.swift */,
 				4A3AC425FA24698634570320 /* TextTextureGenerator.swift */,
 				294984C5D4020113CEE1B0F5 /* TypoArtClassicRenderer.swift */,
 				5B6CA5F4468647E989A3BB8B /* TypoArtNeonRenderer.swift */,
+				B062BD53255CA832DAF84C4F /* WaveTextRenderer.swift */,
 			);
 			path = Renderers;
 			sourceTree = "<group>";
@@ -357,6 +366,7 @@
 				B6A2B4258A70A7985D6F189D /* ExportSheetView.swift in Sources */,
 				9699C099FA7C98323938F5E7 /* FilterChain.swift in Sources */,
 				F38710D570DDCF5EAE41C82C /* GalleryView.swift in Sources */,
+				7D16098A069FA2DED32EAD11 /* GradientStackRenderer.swift in Sources */,
 				764AB135D79445C0D169E07A /* HistoryItemView.swift in Sources */,
 				931A400637202518B1049AF7 /* HistoryView.swift in Sources */,
 				354C709BC1B5DA2DBABDD732 /* LayerCompositor.swift in Sources */,
@@ -365,6 +375,7 @@
 				0DE16697D1E4ED259BBC4B13 /* PatternTiler.swift in Sources */,
 				634386F9BE4EAFFBF34E6836 /* PreviewImageView.swift in Sources */,
 				504103053FF5B0FBF4A47764 /* PurchaseService.swift in Sources */,
+				C920003E0E5F0FB1921612FC /* RetroHalftoneRenderer.swift in Sources */,
 				8BFD7455A7D6E76D384871A2 /* SettingsView.swift in Sources */,
 				A185FD579213EA53C74FAE0F /* TemplateCardView.swift in Sources */,
 				C4D54D1CDB2D86F65C141C3B /* TemplateInputField.swift in Sources */,
@@ -374,6 +385,7 @@
 				727516B815B2FDE3CD3CC21D /* TextTextureGenerator.swift in Sources */,
 				7F56CD302F83C45464CC6948 /* TypoArtClassicRenderer.swift in Sources */,
 				6ED42C56B907514884D728B3 /* TypoArtNeonRenderer.swift in Sources */,
+				9251ABF1B75A20AE89A88B34 /* WaveTextRenderer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

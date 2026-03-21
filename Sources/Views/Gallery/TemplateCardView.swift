@@ -59,6 +59,12 @@ struct TemplateCardView: View {
             ["backgroundText": "TypeArt TypoArt", "titleText": "type"]
         case .logoPatternSphere:
             ["patternText": "pattern logo", "titleText": "pattern\nlogo"]
+        case .waveText:
+            ["titleText": "WAVE"]
+        case .retroHalftone:
+            ["titleText": "RETRO"]
+        case .gradientStack:
+            ["titleText": "STACK"]
         }
     }
 
@@ -67,6 +73,9 @@ struct TemplateCardView: View {
         case .typoArtClassic: "textformat"
         case .typoArtNeon: "sparkles"
         case .logoPatternSphere: "circle.grid.3x3.fill"
+        case .waveText: "water.waves"
+        case .retroHalftone: "circle.dotted"
+        case .gradientStack: "square.3.layers.3d"
         }
     }
 
@@ -90,6 +99,24 @@ struct TemplateCardView: View {
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
+        case .waveText:
+            LinearGradient(
+                colors: [.purple.opacity(0.7), .blue.opacity(0.5)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        case .retroHalftone:
+            LinearGradient(
+                colors: [.orange.opacity(0.7), .red.opacity(0.5)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        case .gradientStack:
+            LinearGradient(
+                colors: [.pink.opacity(0.7), .indigo.opacity(0.5)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
         }
     }
 
@@ -101,6 +128,12 @@ struct TemplateCardView: View {
             String(localized: "Neon-style glowing typography art")
         case .logoPatternSphere:
             String(localized: "Spherical pattern with 3D distortion effect")
+        case .waveText:
+            String(localized: "Text flowing in rainbow sine waves")
+        case .retroHalftone:
+            String(localized: "Bold retro text with halftone dot pattern")
+        case .gradientStack:
+            String(localized: "3D stacked text with color gradient")
         }
     }
 }

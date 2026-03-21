@@ -17,7 +17,9 @@ struct CompositeLayer {
 final class LayerCompositor: Sendable {
     /// Composite multiple layers with blend modes onto a canvas
     func composite(layers: [CompositeLayer], canvasSize: CGSize) -> CGImage? {
-        let renderer = UIGraphicsImageRenderer(size: canvasSize)
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        let renderer = UIGraphicsImageRenderer(size: canvasSize, format: format)
         let image = renderer.image { ctx in
             let context = ctx.cgContext
 
