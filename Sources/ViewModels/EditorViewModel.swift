@@ -45,11 +45,23 @@ final class EditorViewModel {
     }
 
     func generateFullResolution(exportSize: ExportSize = .square) async -> UIImage? {
-        let scale = PurchaseService.shared.exportScale
+        let qualityScale = PurchaseService.shared.exportScale
         let baseSize = exportSize.cgSize
-        let scaledSize = CGSize(width: baseSize.width * CGFloat(scale), height: baseSize.height * CGFloat(scale))
+        let targetSize = CGSize(width: baseSize.width * CGFloat(qualityScale), height: baseSize.height * CGFloat(qualityScale))
         let templateRenderer = renderer(for: templateType)
-        return await templateRenderer.render(inputs: inputTexts, size: scaledSize)
+        guard let rendered = await templateRenderer.render(inputs: inputTexts, size: targetSize) else { return nil }
+        // Re-render at scale=1 so saved image has exact pixel dimensions
+        return normalizeToPixels(rendered, size: targetSize)
+    }
+
+    /// Flatten UIImage to 1x scale so pixel count matches the requested size
+    private func normalizeToPixels(_ image: UIImage, size: CGSize) -> UIImage {
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        let renderer = UIGraphicsImageRenderer(size: size, format: format)
+        return renderer.image { _ in
+            image.draw(in: CGRect(origin: .zero, size: size))
+        }
     }
 
     var hasInput: Bool {

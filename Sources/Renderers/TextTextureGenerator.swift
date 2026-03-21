@@ -13,9 +13,7 @@ final class TextTextureGenerator: Sendable {
     ) -> CGImage? {
         guard !text.isEmpty else { return nil }
 
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
-        let renderer = UIGraphicsImageRenderer(size: canvasSize, format: format)
+        let renderer = UIGraphicsImageRenderer(size: canvasSize)
         let image = renderer.image { ctx in
             let context = ctx.cgContext
 

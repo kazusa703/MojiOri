@@ -23,9 +23,7 @@ final class PatternTiler: Sendable {
             height: max(textSize.height + 5, tileSize.height)
         )
 
-        let tileFormat = UIGraphicsImageRendererFormat()
-        tileFormat.scale = 1
-        let tileRenderer = UIGraphicsImageRenderer(size: tileDimension, format: tileFormat)
+        let tileRenderer = UIGraphicsImageRenderer(size: tileDimension)
         let tileImage = tileRenderer.image { _ in
             (text as NSString).draw(at: CGPoint(x: 5, y: 2), withAttributes: attributes)
         }
@@ -34,9 +32,7 @@ final class PatternTiler: Sendable {
         // Tile across canvas
         let scaledTileWidth = tileDimension.width / scale
         let scaledTileHeight = tileDimension.height / scale
-        let canvasFormat = UIGraphicsImageRendererFormat()
-        canvasFormat.scale = 1
-        let canvasRenderer = UIGraphicsImageRenderer(size: canvasSize, format: canvasFormat)
+        let canvasRenderer = UIGraphicsImageRenderer(size: canvasSize)
         let patternImage = canvasRenderer.image { ctx in
             let context = ctx.cgContext
             context.setFillColor(UIColor.black.cgColor)

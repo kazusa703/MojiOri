@@ -58,9 +58,7 @@ final class TypoArtClassicRenderer: TemplateRenderer, @unchecked Sendable {
     }
 
     private func scaleImage(_ image: CGImage, by scale: CGFloat, canvasSize: CGSize) -> CGImage? {
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
-        let renderer = UIGraphicsImageRenderer(size: canvasSize, format: format)
+        let renderer = UIGraphicsImageRenderer(size: canvasSize)
         let scaled = renderer.image { ctx in
             let context = ctx.cgContext
             context.setFillColor(UIColor.black.cgColor)
@@ -79,9 +77,7 @@ final class TypoArtClassicRenderer: TemplateRenderer, @unchecked Sendable {
     }
 
     private func applyColorOverlay(to image: CGImage, color: UIColor, blendMode: CGBlendMode, opacity: CGFloat, canvasSize: CGSize) -> CGImage? {
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
-        let renderer = UIGraphicsImageRenderer(size: canvasSize, format: format)
+        let renderer = UIGraphicsImageRenderer(size: canvasSize)
         let result = renderer.image { ctx in
             let context = ctx.cgContext
 
@@ -102,9 +98,7 @@ final class TypoArtClassicRenderer: TemplateRenderer, @unchecked Sendable {
     }
 
     private func composeFinal(background: CGImage, titleText: String, params: TemplateParameters, canvasSize: CGSize) -> UIImage? {
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
-        let renderer = UIGraphicsImageRenderer(size: canvasSize, format: format)
+        let renderer = UIGraphicsImageRenderer(size: canvasSize)
         return renderer.image { ctx in
             let context = ctx.cgContext
 

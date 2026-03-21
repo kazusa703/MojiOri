@@ -10,9 +10,7 @@ final class WaveTextRenderer: TemplateRenderer, @unchecked Sendable {
         guard !titleText.isEmpty else { return nil }
 
         let params = templateType.defaultParameters
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
-        let renderer = UIGraphicsImageRenderer(size: size, format: format)
+        let renderer = UIGraphicsImageRenderer(size: size)
 
         return renderer.image { ctx in
             let context = ctx.cgContext

@@ -30,9 +30,7 @@ final class TypoArtNeonRenderer: TemplateRenderer, @unchecked Sendable {
         guard let processedCG = filterChain.toCGImage(processed) else { return nil }
 
         // Step 4-5: Apply neon color with colorDodge blend
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = 1
-        let renderer = UIGraphicsImageRenderer(size: size, format: format)
+        let renderer = UIGraphicsImageRenderer(size: size)
         let finalImage = renderer.image { ctx in
             let context = ctx.cgContext
 
