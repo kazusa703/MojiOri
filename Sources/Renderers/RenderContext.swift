@@ -1,13 +1,13 @@
-import UIKit
 import CoreImage
+import UIKit
 
-/// Shared rendering context for consistent behavior across templates
-struct RenderContext {
+struct RenderContext: Sendable {
     let size: CGSize
-    let ciContext: CIContext
 
     /// Scale factor relative to full resolution (1500px base)
-    var k: CGFloat { min(size.width, size.height) / 1500.0 }
+    var k: CGFloat {
+        min(size.width, size.height) / 1500.0
+    }
 
     /// Scale a value proportionally to canvas size
     func scaled(_ value: CGFloat) -> CGFloat {
@@ -20,17 +20,11 @@ struct RenderContext {
     }
 
     /// Shared CIContext for consistent color management
-    static let shared = CIContext(options: [
-        .workingColorSpace: CGColorSpaceCreateDeviceRGB(),
-        .outputColorSpace: CGColorSpaceCreateDeviceRGB(),
+    nonisolated(unsafe) static let ciContext = CIContext(options: [
+        .useSoftwareRenderer: false,
     ])
 
-    init(size: CGSize) {
-        self.size = size
-        self.ciContext = Self.shared
-    }
-
     func toCGImage(_ ciImage: CIImage) -> CGImage? {
-        ciContext.createCGImage(ciImage, from: ciImage.extent)
+        Self.ciContext.createCGImage(ciImage, from: ciImage.extent)
     }
 }

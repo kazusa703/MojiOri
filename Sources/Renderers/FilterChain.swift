@@ -2,8 +2,6 @@ import CoreImage
 import UIKit
 
 final class FilterChain: Sendable {
-    private nonisolated(unsafe) let ciContext = CIContext()
-
     func applyGaussianBlur(to image: CIImage, radius: Double) -> CIImage {
         image.applyingGaussianBlur(sigma: radius)
             .cropped(to: image.extent)
@@ -45,9 +43,5 @@ final class FilterChain: Sendable {
         filter.setValue(highlightAmount, forKey: "inputHighlightAmount")
         filter.setValue(shadowAmount, forKey: "inputShadowAmount")
         return filter.outputImage ?? image
-    }
-
-    func toCGImage(_ ciImage: CIImage) -> CGImage? {
-        ciContext.createCGImage(ciImage, from: ciImage.extent)
     }
 }

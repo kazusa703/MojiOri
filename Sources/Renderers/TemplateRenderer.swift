@@ -2,7 +2,7 @@ import UIKit
 
 protocol TemplateRenderer: Sendable {
     var templateType: TemplateType { get }
-    func render(inputs: [String: String], size: CGSize) async -> UIImage?
+    func render(inputs: TemplateInputs, context: RenderContext) async -> UIImage?
 }
 
 func renderer(for type: TemplateType) -> any TemplateRenderer {

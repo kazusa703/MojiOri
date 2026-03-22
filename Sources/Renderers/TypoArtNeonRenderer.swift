@@ -1,72 +1,71 @@
-import UIKit
 import CoreImage
+import UIKit
 
 final class TypoArtNeonRenderer: TemplateRenderer, @unchecked Sendable {
     let templateType: TemplateType = .typoArtNeon
     private let textureGenerator = TextTextureGenerator()
     private let filterChain = FilterChain()
 
-    func render(inputs: [String: String], size: CGSize) async -> UIImage? {
-        let backgroundText = inputs["backgroundText"] ?? ""
-        let titleText = inputs["titleText"] ?? ""
+    func render(inputs: TemplateInputs, context: RenderContext) async -> UIImage? {
+        let backgroundText = inputs.string(for: "backgroundText")
+        let titleText = inputs.string(for: "titleText")
         let params = templateType.defaultParameters
+
+        let textureColor = inputs.color(for: "textureColor", default: params.textureTextColor)
+        let titleColor = inputs.color(for: "titleColor", default: params.titleTextColor)
+        let bgColor = inputs.color(for: "bgColor", default: params.backgroundColor)
+        let titleFont = inputs.font(for: "titleFont", default: params.titleFont)
 
         guard !backgroundText.isEmpty else { return nil }
 
-        // Step 1: Generate background texture
+        let size = context.size
+
         guard let textureImage = textureGenerator.generateTexture(
             text: backgroundText,
             font: params.textureFont,
             textColor: .white,
-            backgroundColor: params.backgroundColor,
+            backgroundColor: bgColor,
             canvasSize: size,
-            lineSpacing: 11.5
+            lineSpacing: context.scaled(11.5)
         ) else { return nil }
 
-        // Step 2-3: Apply wrinkle pattern overlay (simulated with noise)
         let ciTexture = CIImage(cgImage: textureImage)
         let processed = filterChain.applyHighlightShadow(to: ciTexture, highlightAmount: 0.3, shadowAmount: 0.2)
 
-        guard let processedCG = filterChain.toCGImage(processed) else { return nil }
+        guard let processedCG = context.toCGImage(processed) else { return nil }
 
-        // Step 4-5: Apply neon color with colorDodge blend
         let renderer = UIGraphicsImageRenderer(size: size)
-        let finalImage = renderer.image { ctx in
-            let context = ctx.cgContext
+        return renderer.image { ctx in
+            let gc = ctx.cgContext
 
-            // Draw base texture
-            context.translateBy(x: 0, y: size.height)
-            context.scaleBy(x: 1, y: -1)
-            context.draw(processedCG, in: CGRect(origin: .zero, size: size))
+            gc.translateBy(x: 0, y: size.height)
+            gc.scaleBy(x: 1, y: -1)
+            gc.draw(processedCG, in: CGRect(origin: .zero, size: size))
 
-            // Apply gold-green color overlay
-            context.setBlendMode(params.blendMode)
-            context.setAlpha(params.textureOpacity)
-            context.setFillColor(params.textureTextColor.cgColor)
-            context.fill(CGRect(origin: .zero, size: size))
+            gc.setBlendMode(params.blendMode)
+            gc.setAlpha(params.textureOpacity)
+            gc.setFillColor(textureColor.cgColor)
+            gc.fill(CGRect(origin: .zero, size: size))
 
-            // Reset transform
-            context.scaleBy(x: 1, y: -1)
-            context.translateBy(x: 0, y: -size.height)
+            gc.scaleBy(x: 1, y: -1)
+            gc.translateBy(x: 0, y: -size.height)
 
-            // Draw title
             guard !titleText.isEmpty else { return }
 
-            let titleFontSize = min(size.width * 0.8, 500.0)
-            let titleFont = UIFont(name: "HelveticaNeue-CondensedBlack", size: titleFontSize)
-                ?? .systemFont(ofSize: titleFontSize, weight: .black)
+            let titleFontSize = min(size.width * 0.8, context.fontSize(500))
+            let scaledFont = titleFont.withSize(titleFontSize)
 
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
 
             let shadow = NSShadow()
             shadow.shadowColor = UIColor.black
-            shadow.shadowBlurRadius = params.shadowSize
-            shadow.shadowOffset = CGSize(width: 0, height: 4)
+            shadow.shadowBlurRadius = context.scaled(params.shadowSize)
+            shadow.shadowOffset = CGSize(width: 0, height: context.scaled(4))
 
             let attributes: [NSAttributedString.Key: Any] = [
-                .font: titleFont,
-                .foregroundColor: params.titleTextColor,
+                .font: scaledFont,
+                .foregroundColor: titleColor,
                 .paragraphStyle: paragraphStyle,
                 .shadow: shadow,
             ]
@@ -80,7 +79,5 @@ final class TypoArtNeonRenderer: TemplateRenderer, @unchecked Sendable {
             )
             attrString.draw(in: textRect)
         }
-
-        return finalImage
     }
 }

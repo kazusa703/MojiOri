@@ -8,7 +8,7 @@ final class EditorViewModel {
     var isRendering = false
     var showExportSheet = false
 
-    // Legacy compatibility
+    /// Legacy compatibility
     var inputTexts: [String: String] {
         get { inputs.textValues }
         set {
@@ -30,7 +30,7 @@ final class EditorViewModel {
         }
         // Initialize color fields with first palette color or default
         for field in templateType.inputFields {
-            if case .color(let palette) = field.fieldType, let first = palette.first {
+            if case let .color(palette) = field.fieldType, let first = palette.first {
                 inputs.set(.color(first.uiColor), for: field.id)
             }
         }
@@ -60,7 +60,7 @@ final class EditorViewModel {
         isRendering = true
         let templateRenderer = renderer(for: templateType)
         let size = lowRes ? CGSize(width: 375, height: 375) : CGSize(width: 750, height: 750)
-        let image = await templateRenderer.render(inputs: inputTexts, size: size)
+        let image = await templateRenderer.render(inputs: inputs, context: RenderContext(size: size))
         guard !Task.isCancelled else {
             isRendering = false
             return
@@ -74,7 +74,7 @@ final class EditorViewModel {
         let baseSize = exportSize.cgSize
         let targetSize = CGSize(width: baseSize.width * CGFloat(qualityScale), height: baseSize.height * CGFloat(qualityScale))
         let templateRenderer = renderer(for: templateType)
-        guard let rendered = await templateRenderer.render(inputs: inputTexts, size: targetSize) else { return nil }
+        guard let rendered = await templateRenderer.render(inputs: inputs, context: RenderContext(size: targetSize)) else { return nil }
         return normalizeToPixels(rendered, size: targetSize)
     }
 
@@ -99,7 +99,9 @@ enum ExportSize: String, CaseIterable, Identifiable {
     case twitterHeader
     case facebookCover
 
-    var id: String { rawValue }
+    var id: String {
+        rawValue
+    }
 
     var cgSize: CGSize {
         switch self {

@@ -1,24 +1,26 @@
-import UIKit
 import CoreImage
+import UIKit
 
 final class LogoPatternSphereRenderer: TemplateRenderer, @unchecked Sendable {
     let templateType: TemplateType = .logoPatternSphere
     private let patternTiler = PatternTiler()
     private let filterChain = FilterChain()
 
-    func render(inputs: [String: String], size: CGSize) async -> UIImage? {
-        let patternText = inputs["patternText"] ?? ""
-        let titleText = inputs["titleText"] ?? ""
+    func render(inputs: TemplateInputs, context: RenderContext) async -> UIImage? {
+        let patternText = inputs.string(for: "patternText")
+        let titleText = inputs.string(for: "titleText")
         let params = templateType.defaultParameters
+
+        let accentColor = inputs.color(for: "accentColor", default: UIColor(hex: "008080"))
+        let titleFont = inputs.font(for: "titleFont", default: params.titleFont)
 
         guard !patternText.isEmpty else { return nil }
 
-        // Scale factor relative to full res (1500px)
-        let scaleFactor = size.width / 1500.0
+        let size = context.size
 
         // Step 1-2: Create pattern tile
-        let fontSize = max(size.width / 20, 16)
-        let patternFont = UIFont(name: "TimesNewRomanPSMT", size: fontSize) ?? .systemFont(ofSize: fontSize)
+        let fontSize = max(context.fontSize(61), 16)
+        let patternFont = titleFont.withSize(fontSize)
         guard let patternImage = patternTiler.generatePattern(
             text: patternText,
             font: patternFont,
@@ -30,87 +32,67 @@ final class LogoPatternSphereRenderer: TemplateRenderer, @unchecked Sendable {
 
         // Step 3: Blur proportional to size
         var ciImage = CIImage(cgImage: patternImage)
-        let blurRadius = max(1.5 * scaleFactor, 0.5)
+        let blurRadius = max(1.5 * context.k, 0.5)
         ciImage = filterChain.applyGaussianBlur(to: ciImage, radius: blurRadius)
 
-        // Step 4-7: Spherize distortion
+        // Step 4-7: Spherize distortion (k-proportional)
         let center = CGPoint(x: size.width / 2, y: size.height / 2)
         let sphereRadius = Double(min(size.width, size.height)) * 0.45
-        for _ in 0..<3 {
-            ciImage = filterChain.applySpherize(
-                to: ciImage,
-                center: center,
-                radius: sphereRadius,
-                scale: Double(params.spherizeAmount)
-            )
+        for _ in 0 ..< 3 {
+            ciImage = filterChain.applySpherize(to: ciImage, center: center, radius: sphereRadius, scale: Double(params.spherizeAmount))
         }
 
-        // Step 8: Invert colors
+        // Step 8: Invert
         ciImage = filterChain.applyInvert(to: ciImage)
-
-        // Step 9: Darken to ensure contrast with white title
         ciImage = filterChain.applyColorControls(to: ciImage, saturation: 0, brightness: -0.25)
 
-        // Step 10: Apply hue and saturation for color
-        ciImage = filterChain.applyHueAdjust(to: ciImage, angle: Double(params.hueShift))
-        ciImage = filterChain.applyColorControls(to: ciImage, saturation: Double(params.saturation) / 100.0, brightness: 0)
+        // Step 10: Apply accent color hue
+        var hue: CGFloat = 0, sat: CGFloat = 0, bri: CGFloat = 0
+        accentColor.getHue(&hue, saturation: &sat, brightness: &bri, alpha: nil)
+        ciImage = filterChain.applyHueAdjust(to: ciImage, angle: Double(hue * 360))
+        ciImage = filterChain.applyColorControls(to: ciImage, saturation: Double(max(sat, 0.5)), brightness: 0)
 
-        guard let finalCG = filterChain.toCGImage(ciImage) else { return nil }
+        guard let finalCG = context.toCGImage(ciImage) else { return nil }
 
-        // Step 11: Compose with gradient and title
+        // Compose with gradient and title
         let renderer = UIGraphicsImageRenderer(size: size)
         return renderer.image { ctx in
-            let context = ctx.cgContext
+            let gc = ctx.cgContext
+            gc.translateBy(x: 0, y: size.height)
+            gc.scaleBy(x: 1, y: -1)
+            gc.draw(finalCG, in: CGRect(origin: .zero, size: size))
 
-            // Draw processed background
-            context.translateBy(x: 0, y: size.height)
-            context.scaleBy(x: 1, y: -1)
-            context.draw(finalCG, in: CGRect(origin: .zero, size: size))
-
-            // Apply radial gradient for depth
-            context.setBlendMode(.colorBurn)
-            context.setAlpha(params.gradientOpacity)
+            // Radial gradient
+            gc.setBlendMode(.colorBurn)
+            gc.setAlpha(params.gradientOpacity)
             let colors = [
                 UIColor(white: 0.15, alpha: 1.0).cgColor,
                 UIColor(white: 0.35, alpha: 1.0).cgColor,
                 UIColor(white: 0.15, alpha: 1.0).cgColor,
             ] as CFArray
-            let gradient = CGGradient(
-                colorsSpace: CGColorSpaceCreateDeviceRGB(),
-                colors: colors,
-                locations: [0.0, 0.5, 1.0]
-            )!
-            context.drawRadialGradient(
-                gradient,
-                startCenter: CGPoint(x: size.width / 2, y: size.height / 2),
-                startRadius: 0,
-                endCenter: CGPoint(x: size.width / 2, y: size.height / 2),
-                endRadius: size.width * 0.7,
-                options: .drawsAfterEndLocation
-            )
+            let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: [0.0, 0.5, 1.0])!
+            gc.drawRadialGradient(gradient, startCenter: CGPoint(x: size.width / 2, y: size.height / 2), startRadius: 0, endCenter: CGPoint(x: size.width / 2, y: size.height / 2), endRadius: size.width * 0.7, options: .drawsAfterEndLocation)
 
-            // Reset transform for text
-            context.scaleBy(x: 1, y: -1)
-            context.translateBy(x: 0, y: -size.height)
+            gc.scaleBy(x: 1, y: -1)
+            gc.translateBy(x: 0, y: -size.height)
 
-            // Draw title text with stroke for visibility at any size
             guard !titleText.isEmpty else { return }
-            let titleFontSize = size.width * 0.14
-            let titleFont = UIFont(name: "TimesNewRomanPSMT", size: titleFontSize)
-                ?? .systemFont(ofSize: titleFontSize, weight: .regular)
+
+            let titleFontSize = context.fontSize(210)
+            let scaledFont = titleFont.withSize(titleFontSize)
+
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
             paragraphStyle.lineSpacing = -titleFontSize * 0.1
 
-            let shadowBlur = max(size.width * 0.008, 2)
+            let shadowBlur = context.scaled(12)
             let shadow = NSShadow()
             shadow.shadowColor = UIColor.black.withAlphaComponent(0.9)
             shadow.shadowBlurRadius = shadowBlur
             shadow.shadowOffset = CGSize(width: 0, height: shadowBlur * 0.3)
 
-            // Draw text outline first for contrast
             let strokeAttributes: [NSAttributedString.Key: Any] = [
-                .font: titleFont,
+                .font: scaledFont,
                 .foregroundColor: UIColor.black.withAlphaComponent(0.5),
                 .strokeColor: UIColor.black.withAlphaComponent(0.5),
                 .strokeWidth: -3.0,
@@ -118,17 +100,11 @@ final class LogoPatternSphereRenderer: TemplateRenderer, @unchecked Sendable {
                 .kern: -titleFontSize * 0.04,
             ]
 
-            let textRect = CGRect(
-                x: size.width * 0.05,
-                y: size.height * 0.3,
-                width: size.width * 0.9,
-                height: size.height * 0.4
-            )
+            let textRect = CGRect(x: size.width * 0.05, y: size.height * 0.3, width: size.width * 0.9, height: size.height * 0.4)
             NSAttributedString(string: titleText.uppercased(), attributes: strokeAttributes).draw(in: textRect)
 
-            // Draw main white text on top
             let mainAttributes: [NSAttributedString.Key: Any] = [
-                .font: titleFont,
+                .font: scaledFont,
                 .foregroundColor: params.titleTextColor,
                 .paragraphStyle: paragraphStyle,
                 .kern: -titleFontSize * 0.04,

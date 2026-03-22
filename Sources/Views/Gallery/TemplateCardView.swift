@@ -45,9 +45,13 @@ struct TemplateCardView: View {
     }
 
     private func generateSamplePreview() async {
-        let inputs = sampleInputs
+        var sampleInputs = TemplateInputs()
+        for (key, value) in self.sampleInputs {
+            sampleInputs.set(.string(value), for: key)
+        }
         let templateRenderer = renderer(for: template)
-        let image = await templateRenderer.render(inputs: inputs, size: CGSize(width: 300, height: 300))
+        let context = RenderContext(size: CGSize(width: 300, height: 300))
+        let image = await templateRenderer.render(inputs: sampleInputs, context: context)
         sampleImage = image
     }
 
